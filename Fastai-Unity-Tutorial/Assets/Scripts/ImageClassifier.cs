@@ -14,7 +14,7 @@ public class ImageClassifier : MonoBehaviour
 
     [Header("Data Processing")]
     [Tooltip("The target minimum model input dimensions")]
-    public int targetDim = 224;
+    public int targetDim = 216;
     [Tooltip("The compute shader for GPU processing")]
     public ComputeShader processingShader;
     [Tooltip("The material with the fragment shader for GPU processing")]
