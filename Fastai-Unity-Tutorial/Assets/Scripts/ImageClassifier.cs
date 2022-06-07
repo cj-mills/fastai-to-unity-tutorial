@@ -43,16 +43,6 @@ public class ImageClassifier : MonoBehaviour
     [Header("Debugging")]
     [Tooltip("Print debugging messages to the console")]
     public bool printDebugMessages = true;
-    [Tooltip("Display GUI")]
-    public bool displayGUI = true;
-    [Tooltip("The on-screen text color")]
-    public Color textColor = Color.red;
-    [Tooltip("The scale value for the on-screen font size")]
-    [Range(0, 99)]
-    public int fontScale = 50;
-    [Tooltip("The number of seconds to wait between refreshing the fps value")]
-    [Range(0.01f, 1.0f)]
-    public float fpsRefreshRate = 0.1f;
 
     [Header("Webcam")]
     [Tooltip("Use a webcam as input")]
@@ -64,6 +54,18 @@ public class ImageClassifier : MonoBehaviour
     public int webcamFPS = 60;
 
     [Header("GUI")]
+    [Tooltip("Display predicted class")]
+    public bool displayPredictedClass = true;
+    [Tooltip("Display fps")]
+    public bool displayFPS = true;
+    [Tooltip("The on-screen text color")]
+    public Color textColor = Color.red;
+    [Tooltip("The scale value for the on-screen font size")]
+    [Range(0, 99)]
+    public int fontScale = 50;
+    [Tooltip("The number of seconds to wait between refreshing the fps value")]
+    [Range(0.01f, 1.0f)]
+    public float fpsRefreshRate = 0.1f;
     [Tooltip("The toggle for using a webcam as the input source")]
     public Toggle useWebcamToggle;
     [Tooltip("The dropdown menu that lists available webcam devices")]
@@ -523,15 +525,16 @@ public class ImageClassifier : MonoBehaviour
     // OnGUI is called for rendering and handling GUI events.
     public void OnGUI()
     {
-        if (!displayGUI) return;
-
         GUIStyle style = new GUIStyle();
         style.fontSize = (int)(Screen.width * (1f / (100f - fontScale)));
         style.normal.textColor = textColor;
 
+        Rect slot1 = new Rect(10, 10, 500, 500);
+        Rect slot2 = new Rect(10, style.fontSize * 1.5f, 500, 500);
+
         bool validIndex = classIndex >= 0 && classIndex < classes.Length;
         string content = $"Predicted Class: {(validIndex ? classes[classIndex] : "Invalid index")}";
-        GUI.Label(new Rect(10, 10, 500, 500), new GUIContent(content), style);
+        if (displayPredictedClass) GUI.Label(slot1, new GUIContent(content), style);
 
         if (Time.unscaledTime > fpsTimer)
         {
@@ -539,8 +542,8 @@ public class ImageClassifier : MonoBehaviour
             fpsTimer = Time.unscaledTime + fpsRefreshRate;
         }
 
-        Rect fpsRect = new Rect(10, style.fontSize * 1.5f, 500, 500);
-        GUI.Label(fpsRect, new GUIContent($"FPS: {fps}"), style);
+        Rect fpsRect = displayPredictedClass ? slot2 : slot1;
+        if (displayFPS) GUI.Label(fpsRect, new GUIContent($"FPS: {fps}"), style);
     }
 
     // OnDisable is called when the MonoBehavior becomes disabled
