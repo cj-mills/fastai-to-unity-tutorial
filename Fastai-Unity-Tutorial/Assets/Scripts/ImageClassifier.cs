@@ -475,7 +475,10 @@ public class ImageClassifier : MonoBehaviour
 
         // Copy the source texture into model input texture
         Graphics.Blit((useWebcam ? webcamTexture : imageTexture), inputTexture);
-        
+
+        // Disable asynchronous GPU readback when not using a Compute Shader backend
+        useAsyncGPUReadback = engine.Summary().Contains("Unity.Barracuda.ComputeVarsWithSharedModel") ? useAsyncGPUReadback : false;
+
         if (SystemInfo.supportsComputeShaders)
         {
             // Normalize the input pixel data
@@ -486,9 +489,6 @@ public class ImageClassifier : MonoBehaviour
         }
         else
         {
-            // Disable asynchronous GPU readback when not using Compute Shaders
-            useAsyncGPUReadback = false;
-
             // Define a temporary HDR RenderTexture
             RenderTexture result = RenderTexture.GetTemporary(inputTexture.width,
                 inputTexture.height, 24, RenderTextureFormat.ARGBHalf);
