@@ -71,6 +71,22 @@ public class ImageClassifier : MonoBehaviour
     [Tooltip("The dropdown menu that lists available webcam devices")]
     public Dropdown webcamDropdown;
 
+    // List of available webcam devices
+    private WebCamDevice[] webcamDevices;
+    // Live video input from a webcam
+    private WebCamTexture webcamTexture;
+    // The name of the current webcam  device
+    private string currentWebcam;
+
+    // The source image dimensions
+    private Vector2Int imageDims;
+    // The current screen object dimensions
+    private Vector2Int screenDims;
+    // The source image texture
+    private Texture imageTexture;
+    // The model input texture
+    private RenderTexture inputTexture;
+
     // The neural net model data structure
     private Model m_RunTimeModel;
     // The main interface to execute models
@@ -79,21 +95,16 @@ public class ImageClassifier : MonoBehaviour
     private string outputLayer;
     // Stores the input data for the model
     private Tensor input;
-
-    // The source image texture
-    private Texture imageTexture;
-    // The model input texture
-    private RenderTexture inputTexture;
-    // The source image dimensions
-    private Vector2Int imageDims;
-    // The current screen object dimensions
-    private Vector2Int screenDims;
-
+    
     // Stores the raw model output on the GPU when using useAsyncGPUReadback
     private RenderTexture outputTextureGPU;
     // Stores the raw model output on the CPU when using useAsyncGPUReadback
     private Texture2D outputTextureCPU;
 
+    // A class for reading in class labels from a JSON file
+    class ClassLabels { public string[] classes; }
+    // The ordered list of class names
+    private string[] classes;
     // Stores the predicted class index
     private int classIndex;
 
@@ -101,19 +112,6 @@ public class ImageClassifier : MonoBehaviour
     private int fps = 0;
     // Controls when the frame rate value updates
     private float fpsTimer = 0f;
-
-    // List of available webcam devices
-    private WebCamDevice[] webcamDevices;
-    // Live video input from a webcam
-    private WebCamTexture webcamTexture;
-    // The name of the current webcam  device
-    private string currentWebcam;
-
-    // The ordered list of class names
-    private string[] classes;
-
-    // A class for reading in class labels from a JSON file
-    class ClassLabels { public string[] classes; }
 
 
     /// <summary>
