@@ -27,12 +27,12 @@ public class ImageClassifier : MonoBehaviour
     public string softmaxLayer = "softmaxLayer";
     [Tooltip("The name for the custom softmax output layer")]
     public string argmaxLayer = "argmaxLayer";
-    [Tooltip("The model execution backend")]
-    public WorkerFactory.Type workerType = WorkerFactory.Type.Auto;
     [Tooltip("The target output layer index")]
     public int outputLayerIndex = 0;
     [Tooltip("EXPERIMENTAL: Indicate whether to order tensor data channels first")]
     public bool useNCHW = true;
+    [Tooltip("The model execution backend")]
+    public WorkerFactory.Type workerType = WorkerFactory.Type.Auto;
 
     [Header("Output Processing")]
     [Tooltip("Asynchronously download model output from the GPU to the CPU.")]
