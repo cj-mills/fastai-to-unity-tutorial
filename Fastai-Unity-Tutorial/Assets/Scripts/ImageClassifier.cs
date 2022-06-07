@@ -78,12 +78,12 @@ public class ImageClassifier : MonoBehaviour
     // The name of the current webcam  device
     private string currentWebcam;
 
-    // The source image dimensions
+    // The test image dimensions
     private Vector2Int imageDims;
+    // The test image texture
+    private Texture imageTexture;
     // The current screen object dimensions
     private Vector2Int screenDims;
-    // The source image texture
-    private Texture imageTexture;
     // The model input texture
     private RenderTexture inputTexture;
 
