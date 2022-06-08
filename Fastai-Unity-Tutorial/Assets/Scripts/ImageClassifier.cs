@@ -108,34 +108,7 @@ public class ImageClassifier : MonoBehaviour
     private int fps = 0;
     // Controls when the frame rate value updates
     private float fpsTimer = 0f;
-
-
-    /// <summary>
-    /// This method is called when the value for the webcam toggle changes
-    /// </summary>
-    /// <param name="useWebcam"></param>
-    public void UpdateWebcamToggle(bool useWebcam) 
-    {
-        this.useWebcam = useWebcam;
-    }
-
-
-    /// <summary>
-    /// The method is called when the selected value for the webcam dropdown changes
-    /// </summary>
-    public void UpdateWebcamDevice()
-    {
-        currentWebcam = webcamDevices[webcamDropdown.value].name;
-        Debug.Log($"Selected Webcam: {currentWebcam}");
-        // Initialize webcam if it is not already playing
-        if (useWebcam) InitializeWebcam(currentWebcam);
-
-        // Resize and position the screen object using the source image dimensions
-        InitializeScreen();
-        // Resize and position the main camera using the source image dimensions
-        InitializeCamera(screenDims);
-    }
-
+    
 
     /// <summary>
     /// Initialize the selected webcam device
@@ -501,6 +474,33 @@ public class ImageClassifier : MonoBehaviour
 
         // Unload assets when running in a web browser
         if (Application.platform == RuntimePlatform.WebGLPlayer) Resources.UnloadUnusedAssets();
+    }
+
+
+    /// <summary>
+    /// This method is called when the value for the webcam toggle changes
+    /// </summary>
+    /// <param name="useWebcam"></param>
+    public void UpdateWebcamToggle(bool useWebcam)
+    {
+        this.useWebcam = useWebcam;
+    }
+
+
+    /// <summary>
+    /// The method is called when the selected value for the webcam dropdown changes
+    /// </summary>
+    public void UpdateWebcamDevice()
+    {
+        currentWebcam = webcamDevices[webcamDropdown.value].name;
+        Debug.Log($"Selected Webcam: {currentWebcam}");
+        // Initialize webcam if it is not already playing
+        if (useWebcam) InitializeWebcam(currentWebcam);
+
+        // Resize and position the screen object using the source image dimensions
+        InitializeScreen();
+        // Resize and position the main camera using the source image dimensions
+        InitializeCamera(screenDims);
     }
 
 
