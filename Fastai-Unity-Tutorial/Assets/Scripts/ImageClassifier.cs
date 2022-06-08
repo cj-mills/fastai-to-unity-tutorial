@@ -87,12 +87,8 @@ public class ImageClassifier : MonoBehaviour
     // The model input texture
     private RenderTexture inputTexture;
 
-    // The neural net model data structure
-    private Model m_RunTimeModel;
     // The main interface to execute models
     private IWorker engine;
-    // The name of the model output layer
-    private string outputLayer;
     // Stores the input data for the model
     private Tensor input;
     
@@ -115,18 +111,29 @@ public class ImageClassifier : MonoBehaviour
 
 
     /// <summary>
-    /// The a list of the available webcam devices
+    /// This method is called when the value for the webcam toggle changes
     /// </summary>
-    /// <param name="printDeviceNames">Indicates whether to print the device names</param>
-    public void GetWebcamDevices(bool printDeviceNames=false)
+    /// <param name="useWebcam"></param>
+    public void UpdateWebcamToggle(bool useWebcam) 
     {
-        webcamDevices = WebCamTexture.devices;
+        this.useWebcam = useWebcam;
+    }
 
-        if (printDeviceNames)
-        {
-            Debug.Log("Available Webcam Devices:");
-            for (int i = 0; i < webcamDevices.Length; i++) Debug.Log(webcamDevices[i].name);
-        }
+
+    /// <summary>
+    /// The method is called when the selected value for the webcam dropdown changes
+    /// </summary>
+    public void UpdateWebcamDevice()
+    {
+        currentWebcam = webcamDevices[webcamDropdown.value].name;
+        Debug.Log($"Selected Webcam: {currentWebcam}");
+        // Initialize webcam if it is not already playing
+        if (useWebcam) InitializeWebcam(currentWebcam);
+
+        // Resize and position the screen object using the source image dimensions
+        InitializeScreen();
+        // Resize and position the main camera using the source image dimensions
+        InitializeCamera(screenDims);
     }
 
 
@@ -134,8 +141,9 @@ public class ImageClassifier : MonoBehaviour
     /// Initialize the selected webcam device
     /// </summary>
     /// <param name="deviceName">The name of the selected webcam device</param>
-    public void InitializeWebcam(string deviceName)
+    private void InitializeWebcam(string deviceName)
     {
+        // Stop any webcams already playing
         if (webcamTexture && webcamTexture.isPlaying) webcamTexture.Stop();
 
         // Create a new WebCamTexture
@@ -145,10 +153,10 @@ public class ImageClassifier : MonoBehaviour
         webcamTexture.Play();
         // Check if webcam is playing
         useWebcam = webcamTexture.isPlaying;
+        // Update toggle value
         useWebcamToggle.SetIsOnWithoutNotify(useWebcam);
 
-        string debugMessage = useWebcam ? "Webcam is playing" : "Webcam not playing, option disabled";
-        Debug.Log(debugMessage);
+        Debug.Log(useWebcam ? "Webcam is playing" : "Webcam not playing, option disabled");
     }
 
 
@@ -175,6 +183,7 @@ public class ImageClassifier : MonoBehaviour
         // Adjust the screen position
         screen.position = new Vector3(screenDims.x / 2, screenDims.y / 2, 1);
     }
+
 
     /// <summary>
     /// Initialize the GUI dropdown list
@@ -240,7 +249,8 @@ public class ImageClassifier : MonoBehaviour
         imageDims = new Vector2Int(imageTexture.width, imageTexture.height);
 
         // Initialize list of available webcam devices
-        GetWebcamDevices(printDeviceNames: true);
+        webcamDevices = WebCamTexture.devices;
+        foreach (WebCamDevice device in webcamDevices) Debug.Log(device.name);
         currentWebcam = webcamDevices[0].name;
         useWebcam = webcamDevices.Length > 0 ? useWebcam : false;
         // Initialize webcam
@@ -252,9 +262,9 @@ public class ImageClassifier : MonoBehaviour
         InitializeCamera(screenDims);
 
         // Get an object oriented representation of the model
-        m_RunTimeModel = ModelLoader.Load(modelAsset);
+        Model m_RunTimeModel = ModelLoader.Load(modelAsset);
         // Get the name of the target output layer
-        outputLayer = m_RunTimeModel.outputs[outputLayerIndex];
+        string outputLayer = m_RunTimeModel.outputs[outputLayerIndex];
 
         // Create a model builder to modify the m_RunTimeModel
         ModelBuilder modelBuilder = new ModelBuilder(m_RunTimeModel);
@@ -349,7 +359,7 @@ public class ImageClassifier : MonoBehaviour
     /// Called once AsyncGPUReadback has been completed
     /// </summary>
     /// <param name="request"></param>
-    void OnCompleteReadback(AsyncGPUReadbackRequest request)
+    private void OnCompleteReadback(AsyncGPUReadbackRequest request)
     {
         if (request.hasError)
         {
@@ -373,7 +383,7 @@ public class ImageClassifier : MonoBehaviour
     /// </summary>
     /// <param name="engine">The interface for executing the model</param>
     /// <returns></returns>
-    int ProcessOutput(IWorker engine)
+    private int ProcessOutput(IWorker engine)
     {
         int classIndex = -1;
 
@@ -405,33 +415,7 @@ public class ImageClassifier : MonoBehaviour
 
         return classIndex;
     }
-
-
-    /// <summary>
-    /// This method is called when the value for the webcam toggle changes
-    /// </summary>
-    /// <param name="useWebcam"></param>
-    public void UpdateWebcamToggle(bool useWebcam)
-    {
-        this.useWebcam = useWebcam;
-    }
-
-    /// <summary>
-    /// The method is called when the selected value for the webcam dropdown changes
-    /// </summary>
-    public void UpdateWebcamDevice()
-    {
-        currentWebcam = webcamDevices[webcamDropdown.value].name;
-        Debug.Log($"Selected Webcam: {currentWebcam}");
-        // Initialize webcam if it is not already playing
-        if (useWebcam) InitializeWebcam(currentWebcam);
-
-        // Resize and position the screen object using the source image dimensions
-        InitializeScreen();
-        // Resize and position the main camera using the source image dimensions
-        InitializeCamera(screenDims);
-    }
-
+    
 
     // Update is called once per frame
     void Update()
@@ -523,30 +507,39 @@ public class ImageClassifier : MonoBehaviour
     // OnGUI is called for rendering and handling GUI events.
     public void OnGUI()
     {
-        GUIStyle style = new GUIStyle();
-        style.fontSize = (int)(Screen.width * (1f / (100f - fontScale)));
+        // Define styling information for GUI elements
+        GUIStyle style = new GUIStyle
+        {
+            fontSize = (int)(Screen.width * (1f / (100f - fontScale)))
+        };
         style.normal.textColor = textColor;
 
+        // Define screen spaces for GUI elements
         Rect slot1 = new Rect(10, 10, 500, 500);
         Rect slot2 = new Rect(10, style.fontSize * 1.5f, 500, 500);
 
+        // Verify predicted class index is valid
         bool validIndex = classIndex >= 0 && classIndex < classes.Length;
         string content = $"Predicted Class: {(validIndex ? classes[classIndex] : "Invalid index")}";
         if (displayPredictedClass) GUI.Label(slot1, new GUIContent(content), style);
 
+        // Update framerate value
         if (Time.unscaledTime > fpsTimer)
         {
             fps = (int)(1f / Time.unscaledDeltaTime);
             fpsTimer = Time.unscaledTime + fpsRefreshRate;
         }
 
+        // Adjust screen position when not showing predicted class
         Rect fpsRect = displayPredictedClass ? slot2 : slot1;
         if (displayFPS) GUI.Label(fpsRect, new GUIContent($"FPS: {fps}"), style);
     }
 
+
     // OnDisable is called when the MonoBehavior becomes disabled
     private void OnDisable()
     {
+        // Release the resources allocated for the outputTextureGPU
         RenderTexture.ReleaseTemporary(outputTextureGPU);
 
         // Release the resources allocated for the inference engine
