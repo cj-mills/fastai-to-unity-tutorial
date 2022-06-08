@@ -21,7 +21,7 @@
 <ul><li><p>
 <details><summary>Reference Images</summary><br/>
 
-| Label    | Image                                              |
+| Class    | Image                                              |
 | --------- | ------------------------------------------------------------ |
 | 0_OR_O    | ![O1](./images/O1.jpg) |
 | 1         | ![ONE_0](./images/ONE_0.jpg) |
