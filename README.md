@@ -36,33 +36,9 @@
 <p>
 <details><summary>Cool Dropdown #1</summary><br/>
 
-````html
-// so wow, much amazing... you can even put code in these drop downs!
-document.getElementById('root')
-```s
-
-[Or a link - like to google](https://google.com)
-
-- Or a List
-  - or a nested List
-  - like this
-  - with 😊 emojis
-- Like this
-
-Or even just normal text
-
-</details>
-
-<details><summary>Cool Dropdown #2</summary><br>
-
-More cool text hiding in my dropdown
-
-</details>
-
-<details><summary>Cool Dropdown #3</summary><br>
-
-Easter egg! :egg::egg::egg:
-
+| GitHub Repository    | Demo Link      |
+| --------------------------------- | ------------------------------------------------------------ |
+| [Fastai ASL Classification WebGL Demo](https://github.com/cj-mills/Fastai-ASL-Classification-WebGL-Demo) | [ASL Classifier](https://cj-mills.github.io/Fastai-ASL-Classification-WebGL-Demo/) |
 </details>
 </p>
 
