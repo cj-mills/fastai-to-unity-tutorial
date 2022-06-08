@@ -18,7 +18,7 @@
 | [GitHub Repository](https://github.com/cj-mills/fastai-to-unity-tutorial/blob/main/notebooks/Fastai-to-Unity-Tutorial.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cj-mills/fastai-to-unity-tutorial/blob/main/notebooks/Fastai-to-Unity-Tutorial.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/cj-mills/fastai-to-unity-tutorial/blob/main/notebooks/Fastai-to-Unity-Tutorial.ipynb) |
 
 **Kaggle Dataset:** [belalelwikel/asl-and-some-words](https://www.kaggle.com/datasets/belalelwikel/asl-and-some-words)
-<ul><li><p>
+<p>
 <details><summary>Reference Images</summary><br/>
 
 | Symbol    | Reference Image                                              |
@@ -78,7 +78,7 @@
 | Yes       | ![Yes_0](./images/Yes_0.jpg) |
 | nothing   | ![nothing1](./images/nothing1.jpg) |
 </details>
-</p></li></ul>
+</p>
 
 
 
