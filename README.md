@@ -21,18 +21,6 @@
 
 
 
-
-
-<details>
-<summary>Heading</summary>
-<!--All you need is a blank line-->
-	| GitHub Repository    | Demo Link      |
-| --------------------------------- | ------------------------------------------------------------ |
-| [Fastai ASL Classification WebGL Demo](https://github.com/cj-mills/Fastai-ASL-Classification-WebGL-Demo) | [ASL Classifier](https://cj-mills.github.io/Fastai-ASL-Classification-WebGL-Demo/) |
-</details>
-
-
-
 ## Tutorial Links
 
 [Part 1](https://christianjmills.com/Fastai-to-Unity-Tutorial-1/): Part 1 covers training and exporting a model.
