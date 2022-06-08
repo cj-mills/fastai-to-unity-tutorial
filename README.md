@@ -18,22 +18,7 @@
 | [GitHub Repository](https://github.com/cj-mills/fastai-to-unity-tutorial/blob/main/notebooks/Fastai-to-Unity-Tutorial.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cj-mills/fastai-to-unity-tutorial/blob/main/notebooks/Fastai-to-Unity-Tutorial.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/cj-mills/fastai-to-unity-tutorial/blob/main/notebooks/Fastai-to-Unity-Tutorial.ipynb) |
 
 * **Kaggle Dataset:** [belalelwikel/asl-and-some-words](https://www.kaggle.com/datasets/belalelwikel/asl-and-some-words)
-
-
-
-## Tutorial Links
-
-[Part 1](https://christianjmills.com/Fastai-to-Unity-Tutorial-1/): Part 1 covers training and exporting a model.
-
-[Part 2](https://christianjmills.com/Fastai-to-Unity-Tutorial-2/): Part 2 covers implementing a trained model in a Unity project.
-
-[Part 3](https://christianjmills.com/Fastai-to-Unity-Tutorial-3/): Part 3 covers building a Unity project to run in a web browser and hosting it using GitHub Pages.
-
-
-
-
-
-<p>
+* <p>
 <details><summary>Reference Images</summary><br/>
 
 | Symbol    | Reference Image                                              |
@@ -94,3 +79,14 @@
 | nothing   | ![nothing1](./images/nothing1.jpg) |
 </details>
 </p>
+
+
+
+## Tutorial Links
+
+[Part 1](https://christianjmills.com/Fastai-to-Unity-Tutorial-1/): Part 1 covers training and exporting a model.
+
+[Part 2](https://christianjmills.com/Fastai-to-Unity-Tutorial-2/): Part 2 covers implementing a trained model in a Unity project.
+
+[Part 3](https://christianjmills.com/Fastai-to-Unity-Tutorial-3/): Part 3 covers building a Unity project to run in a web browser and hosting it using GitHub Pages.
+
