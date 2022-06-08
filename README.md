@@ -28,3 +28,43 @@
 [Part 2](https://christianjmills.com/Fastai-to-Unity-Tutorial-2/): Part 2 covers implementing a trained model in a Unity project.
 
 [Part 3](https://christianjmills.com/Fastai-to-Unity-Tutorial-3/): Part 3 covers building a Unity project to run in a web browser and hosting it using GitHub Pages.
+
+
+
+
+
+<p>
+<details><summary>Cool Dropdown #1</summary><br/>
+
+````html
+// so wow, much amazing... you can even put code in these drop downs!
+document.getElementById('root')
+```s
+
+[Or a link - like to google](https://google.com)
+
+- Or a List
+  - or a nested List
+  - like this
+  - with 😊 emojis
+- Like this
+
+Or even just normal text
+
+</details>
+
+<details><summary>Cool Dropdown #2</summary><br>
+
+More cool text hiding in my dropdown
+
+</details>
+
+<details><summary>Cool Dropdown #3</summary><br>
+
+Easter egg! :egg::egg::egg:
+
+</details>
+</p>
+
+
+````
