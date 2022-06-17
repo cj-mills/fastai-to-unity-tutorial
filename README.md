@@ -8,6 +8,7 @@
 | GitHub Repository    | Demo Link      |
 | --------------------------------- | ------------------------------------------------------------ |
 | [Fastai ASL Classification WebGL Demo](https://github.com/cj-mills/Fastai-ASL-Classification-WebGL-Demo) | [ASL Classifier](https://cj-mills.github.io/Fastai-ASL-Classification-WebGL-Demo/) |
+| [Crazy Blocks ASL WebGL Demo](https://github.com/cj-mills/Crazy-Blocks-ASL-WebGL-Demo) | [Crazy Blocks](https://cj-mills.github.io/Crazy-Blocks-ASL-WebGL-Demo/) |
 
 
 
