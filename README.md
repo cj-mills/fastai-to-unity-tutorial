@@ -91,3 +91,4 @@
 
 [Part 3](https://christianjmills.com/Fastai-to-Unity-Tutorial-3/): Part 3 covers building a Unity project to run in a web browser and hosting it using GitHub Pages.
 
+[Follow-up 1](https://christianjmills.com/Fastai-to-LibTorch-to-Unity-Tutorial-Windows-1/): This follow-up tutorial series covers creating a LibTorch plugin for the Unity game engine.
