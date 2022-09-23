@@ -85,10 +85,10 @@
 
 ## Tutorial Links
 
-[Part 1](https://christianjmills.com/Fastai-to-Unity-Tutorial-1/): Part 1 covers training and exporting a model.
+[Part 1](https://christianjmills.com/posts/fastai-to-unity-tutorial/part-1/): Part 1 covers training and exporting a model.
 
-[Part 2](https://christianjmills.com/Fastai-to-Unity-Tutorial-2/): Part 2 covers implementing a trained model in a Unity project.
+[Part 2](https://christianjmills.com/posts/fastai-to-unity-tutorial/part-2/): Part 2 covers implementing a trained model in a Unity project.
 
-[Part 3](https://christianjmills.com/Fastai-to-Unity-Tutorial-3/): Part 3 covers building a Unity project to run in a web browser and hosting it using GitHub Pages.
+[Part 3](https://christianjmills.com/posts/fastai-to-unity-tutorial/part-3/): Part 3 covers building a Unity project to run in a web browser and hosting it using GitHub Pages.
 
-[Follow-up 1](https://christianjmills.com/Fastai-to-LibTorch-to-Unity-Tutorial-Windows-1/): This follow-up tutorial series covers creating a LibTorch plugin for the Unity game engine.
+[Follow-up 1](https://christianjmills.com/posts/fastai-libtorch-unity-tutorial/part-1/): This follow-up tutorial series covers creating a LibTorch plugin for the Unity game engine.
