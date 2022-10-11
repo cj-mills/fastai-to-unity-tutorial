@@ -1,13 +1,9 @@
 # Fastai to Unity Beginner Tutorial
 ## Tutorial Links
-
-[Part 1](https://christianjmills.com/posts/fastai-to-unity-tutorial/part-1/): Train an image classifier using the fastai library and export it to ONNX.
-
-[Part 2](https://christianjmills.com/posts/fastai-to-unity-tutorial/part-2/): Classify images in a Unity project with the Barracuda inference library. 
-
-[Part 3](https://christianjmills.com/posts/fastai-to-unity-tutorial/part-3/): Build a Unity project as a WebGL application and host it using GitHub Pages. 
-
-[Follow-up 1](https://christianjmills.com/posts/fastai-libtorch-unity-tutorial/part-1/): Creating a LibTorch plugin for the Unity game engine.
+* [Part 1](https://christianjmills.com/posts/fastai-to-unity-tutorial/part-1/): Train an image classifier using the fastai library and export it to ONNX.
+* [Part 2](https://christianjmills.com/posts/fastai-to-unity-tutorial/part-2/): Classify images in a Unity project with the Barracuda inference library. 
+* [Part 3](https://christianjmills.com/posts/fastai-to-unity-tutorial/part-3/): Build a Unity project as a WebGL application and host it using GitHub Pages. 
+* [Follow-up 1](https://christianjmills.com/posts/fastai-libtorch-unity-tutorial/part-1/): Creating a LibTorch plugin for the Unity game engine.
 
 
 
