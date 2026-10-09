@@ -85,3 +85,12 @@
 </details>
 </p></li></ul>
 
+<!-- relocated-posts:start (projected by the relocate verb; never edit by hand) -->
+## Retired posts
+
+The posts that accompanied this repository were retired from [christianjmills.com](https://christianjmills.com) and now live here:
+
+- [Fastai to Unity Beginner Tutorial Pt. 1](retired-post/fastai-to-unity-tutorial/part-1/README.md) (2022-06-06)
+- [Fastai to Unity Beginner Tutorial Pt. 2](retired-post/fastai-to-unity-tutorial/part-2/README.md) (2022-06-07)
+- [Fastai to Unity Beginner Tutorial Pt. 3](retired-post/fastai-to-unity-tutorial/part-3/README.md) (2022-06-08)
+<!-- relocated-posts:end -->
